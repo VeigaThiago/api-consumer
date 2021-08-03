@@ -1,7 +1,5 @@
 # Dienekes ApiConsumer Challenge
 
-## Desafio para o processo seletivo da Dienekes
-
 <h4 align="center"> 
 	  ApiConsumer 🚀 Finalizado.  
 </h4>
