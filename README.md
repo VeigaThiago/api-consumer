@@ -29,9 +29,11 @@ Suba o arquivo docker-compose na pasta do projeto, `docker-compose up` ou `sudo 
 
 ### Utilizando a aplicação
 Para o funcionamento da aplicação, será necessário enviar as seguintes rotas na api do GraphQL:
-* Iniciar a aplicação:
+* Execute as migrations:
+`mix ecto.migrate`
+* Inicie a aplicação:
 `iex -S mix phx.server`
-* Chamar a função que consome a API:
+* Chame a função que consome a API:
 ```elixir
 ApiConsumer.Extract.consumer
 ```
@@ -47,7 +49,7 @@ ApiConsumer.Extract.consumer
 ### Testes
 Por fim, mas não menos importante, a execução dos nossos testes, para isso execute o seguinte comando na pasta raiz do projeto:
 ```
-$ mix test
+$ mix test test/api_consumer/api_consumer_test.exs
 ```
 
 ---
