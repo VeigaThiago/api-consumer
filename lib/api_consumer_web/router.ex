@@ -13,6 +13,14 @@ defmodule ApiConsumerWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/api" do
+    pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL, schema: ApiConsumer.Absinthe.Queries
+
+    forward "/", Absinthe.Plug, schema: ApiConsumer.Absinthe.Queries
+  end
+
   scope "/", ApiConsumerWeb do
     pipe_through :browser
 

@@ -42,7 +42,12 @@ defmodule ApiConsumer.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:tesla, "~> 1.4"},
+      {:hackney, "~> 1.17.0"},
+      {:absinthe, "~> 1.5", override: true},
+      {:absinthe_plug, "~> 1.5"},
+      {:uuid, "~> 1.1"}
     ]
   end
 
