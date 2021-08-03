@@ -2,12 +2,22 @@ defmodule ApiConsumer.Transformer do
   alias ApiConsumer.Queries.Number, as: NumberQuery
   alias ApiConsumer.Repo
 
+  @doc """
+  ApiConsumer.Transformer.number_sort() get all number table inserted numbers and
+  sort this numbers
+  """
   def number_sort() do
     NumberQuery.get_numbers()
     |> Repo.all()
     |> sort()
   end
 
+  @doc """
+  ApiConsumer.Transformer.sort() receive a list with numbers and acts recursively
+  run for all array, this function split array in less than pivot array, pivot and
+  greater than pivot array. Calling those little arrays until all the
+  pivots are in place.
+  """
   def sort([]), do: []
 
   def sort([pivot | rest]) do

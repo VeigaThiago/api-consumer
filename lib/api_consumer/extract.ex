@@ -8,6 +8,12 @@ defmodule ApiConsumer.Extract do
   plug(Tesla.Middleware.BaseUrl, "http://challenge.dienekes.com.br/api/numbers")
   plug(Tesla.Middleware.JSON)
 
+  @doc """
+  ApiConsumer.Extract.consumer() call Tesla HTTP client and acts recursively until
+  check all pages. In case that one fail page request, our application will try
+  10 times the same page, if fail persists, the page will be insert in Page table
+  and we can call just this page calling ApiConsumer.Extract.consumer_one_page(fail_page).
+  """
   def consumer(page \\ 1) do
     with true <- Enum.any?(get_numbers(page)) do
       consumer_one_page(page)
