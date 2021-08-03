@@ -10,8 +10,7 @@ defmodule ApiConsumer.Extract do
 
   def consumer(page \\ 1) do
     with true <- Enum.any?(get_numbers(page)) do
-      get_numbers(page)
-      |> Insert.insert_numbers()
+      consumer_one_page(page)
 
       consumer(page + 1)
     end
@@ -19,7 +18,12 @@ defmodule ApiConsumer.Extract do
     :all_numbers_read
   end
 
-  def get_numbers(page, count \\ 0) do
+  def consumer_one_page(page) do
+    get_numbers(page)
+    |> Insert.insert_numbers()
+  end
+
+  defp get_numbers(page, count \\ 0) do
     {:ok, response} = get("?page=" <> to_string(page))
 
     case response.body do

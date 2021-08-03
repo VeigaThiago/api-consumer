@@ -15,7 +15,7 @@ defmodule ApiConsumer.Transformer do
     sort(less_than) ++ [pivot] ++ sort(greater_than)
   end
 
-  def split(list, pivot) do
+  defp split(list, pivot) do
     list
     |> Enum.group_by(fn x ->
       x < pivot
